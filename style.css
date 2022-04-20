@@ -1,0 +1,38 @@
+/* * {
+    border: 1px solid black;
+} */
+
+.day-selector-menu {
+    width: 150px;
+    min-width: 50px;
+    margin-left: 5px;
+    font-family: 'Cinzel', serif;
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+#task-adding-day-selector {
+    width: 220px;
+    min-width: 50px;
+    margin-right: 9px;
+    margin-left: 17px;
+    font-family: 'Cinzel', serif;
+}
+
+#adding-btn {
+    padding: 0 26px;
+    font-family: 'Cinzel', serif;
+}
+
+p,
+#task-adding-form {
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar,
+#scheduled-title,
+#done-title {
+    font-family: 'Cinzel', serif;
+}
