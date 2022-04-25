@@ -85,29 +85,52 @@ function addItem(e) {
 itemList.addEventListener('click', removeItem);
 doneList.addEventListener('click', removeItem);
 
-let toastPopup = document.getElementById('popup-toast');
+function opacityCheck() {
+    document.getElementById('body-element').style.opacity = "1";
+}
+
+function createPopup() {
+    window.toastPopup = document.createElement('div');
+    toastPopup.id = 'popup-toast';
+    let head = document.getElementById('head');
+    head.appendChild(toastPopup);
+    let toastDiv = document.createElement('div');
+    toastDiv.className = 'bg-dark text-white toast-div';
+    toastDiv.textContent = 'Are You Sure?';
+    toastPopup.appendChild(toastDiv);
+    let toastButtonDiv = document.createElement('div');
+    toastButtonDiv.className = 'mt-2 pt-2 border-top toast-btn-div';
+    toastDiv.appendChild(toastButtonDiv);
+
+    const checkMark = document.createElement('i');
+    checkMark.className = 'fa-solid fa-check text-white bg-info check-sure';
+    const xMark = document.createElement('i');
+    xMark.className = 'fa-solid fa-xmark bg-light text-dark check-not-sure';
+    toastButtonDiv.appendChild(checkMark);
+    toastButtonDiv.appendChild(xMark);
+    document.getElementById('body-element').style.opacity = "0.5";
+}
 
 function removeItem(e) {
     if(e.target.classList.contains('delete')){
+        createPopup();
         let li = e.target.parentElement.parentElement;
-        let toast = new bootstrap.Toast(toastPopup);
-        toast.show();
         toastPopup.addEventListener('click', youSure);
-        // let input = document.getElementsByTagName('i');
-        // input.addEventListener("keyup", function(event) {
-        //     if (event.keyCode === 13) {
-        //         event.preventDefault();
-        //         document.getElementByClassName('check-sure').click();
-        //     }
-        //   });
         
         function youSure(f) {
             if (f.target.classList.contains('check-sure')) {
                 if (itemList.contains(li)) {
                     itemList.removeChild(li);
+                    toastPopup.remove();
+                    opacityCheck();
                 } else if (doneList.contains(li)) {
                     doneList.removeChild(li);
+                    toastPopup.remove();
+                    opacityCheck();
                 }
+            } else {
+                toastPopup.remove();
+                opacityCheck();
             }
         }
     }

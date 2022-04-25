@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/list-favicon.png" type="image/x-icon">
 </head>
-<header>
+<header id="head">
     <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid justify-content-around">
           <a class="navbar-brand text-white">To-Do List</a>
@@ -20,21 +20,12 @@
             <input class="form-control me-2" id="filter" type="search" placeholder="Search" aria-label="Search">
           </form>
         </div>
-      </nav>
-      <div class="toast" id="popup-toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body bg-dark text-white">
-          Are You Sure?
-          <div class="mt-2 pt-2 border-top">
-            <button type="button" class="btn btn-info btn-sm check-sure text-white" data-bs-dismiss="toast">Yes</button>
-            <button type="button" class="btn btn-secondary btn-sm check-not-sure" data-bs-dismiss="toast">Close</button>
-          </div>
-        </div>
-    </div>
+    </nav>
 </header>
 <body>
     <div class="container vh-100" id="todo-list">
-        <form class="d-flex my-3" id="task-adding-form">
-            <input class="form-control me-2" id="item" type="text" placeholder="Add a Task to Your Schedule" aria-label="Add">
+        <form class="my-3" id="task-adding-form">
+            <input class="form-control" id="item" type="text" placeholder="Add a Task to Your Schedule" aria-label="Add" maxlength="38">
             <div id="task-adding-day-selector">
                 <select class="form-select bg-info text-white border-info" id="order-select" aria-label="Default select example">
                     <option selected>Priority</option>
@@ -45,31 +36,17 @@
             </div>
             <button class="btn btn-outline-info bg-info text-white" id="adding-btn" type="submit">Add</button>
         </form>
-        <div class="row">
-            <div class="col-9">
+        <div class="row" id="body-element">
+            <div class="col-lg-9">
                 <h4 class="bg-dark text-white rounded text-center p-2" id="scheduled-title">Scheduled Tasks</h4>
                 <ul class="list-group" id="itemList">
-                    <li class="list-group-item bg-light">
-                        <p class="px-2 flex-grow-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, tenetur?</p> 
-                        <div class="btn-group h-25" role="group" aria-label="Button group with nested dropdown">
-                            <i class="fa-solid fa-check text-white bg-info done-mark list-check-btn"></i>
-                            <i class="fa-solid fa-xmark text-white bg-info delete list-x-btn"></i>
-                        </div>
-                        <div class="displayer-container bg-info rounded">
-                            <h6 class="text-white">Priority</h6>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3" id="doneList-container">
                 <h4 class="bg-dark text-white rounded text-center p-2" id="done-title">Done</h4>
                 <ul class="list-group" id="doneList">
-                    <li class="list-group-item d-flex bg-dark bg-gradient text-white">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, necessitatibus!</p>
-                        <div>
-                            <i class="fa-solid fa-xmark delete"></i>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
